@@ -45,13 +45,12 @@ const getAllBooks = async (req, res) => {
 
 const deleteAllBooks =  async (req, res) => {
     try {
-        const allBooks = await Book.findOneAndUpdate(filter, update, {
-            new: true
-          });
+        let delet = req.params.id;
+        const deleteBooks = await Book.findOneAndDelete({id:delet});
 
         const successResponse = {
             message: "success",
-            books: allBooks
+            books: deleteBooks
         }
         res.status(200).json(successResponse)
 

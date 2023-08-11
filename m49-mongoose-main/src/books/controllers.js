@@ -62,10 +62,33 @@ const deleteAllBooks =  async (req, res) => {
         res.status(501).json(errorResponse)
     }
 }
+const putAllBooks =  async (req, res) => {
+    try {
 
+      
+const name =   req.params['name'] 
+       
+        const putAllBooks = await Book.findOneAndUpdate({title:name},  {$set : { author: req.body.author}}, {new : true})
+
+        const successResponse = {
+            message: "success",
+        
+            books: putAllBooks
+           
+        }
+        res.status(200).json(successResponse)
+
+    } catch (error) {
+        const errorResponse = {
+            message: "Error",
+            error: error
+        }
+        res.status(501).json(errorResponse)
+    }
+}
 
 module.exports = {
     addBook,
     getAllBooks,
-    deleteAllBooks
+    deleteAllBooks,putAllBooks
 }

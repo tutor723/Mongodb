@@ -25,7 +25,7 @@ app.get('*', (req, res) => {
     res.status(404).send('<h1>404 page not found</h1>')
 })
 
-app.delete('/del/:title',(req,res) =>{
+app.delete('*',(req,res) =>{
     res.status(404).send('<h1>404 page not found</h1>')
 })
 

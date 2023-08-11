@@ -45,7 +45,7 @@ const getAllBooks = async (req, res) => {
 
 const deleteAllBooks =  async (req, res) => {
     try {
-        let delet = req.body.title;
+        let delet = req.params['title']
         const deleteBooks = await Book.findOneAndDelete({title:delet});
 
         const successResponse = {
